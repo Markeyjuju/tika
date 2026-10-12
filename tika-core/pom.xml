@@ -311,6 +311,7 @@
         <configuration>
           <targetClasses>
             <param>org.apache.tika.utils.ProcessUtils</param>
+            <param>org.apache.tika.utils.XMLReaderUtils</param>
           </targetClasses>
         </configuration>
       </plugin>
