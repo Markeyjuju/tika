@@ -1,5 +1,7 @@
 Utilisation de jacoco pour évaluer la couverture des tests :   
-![][image1]  
+<img width="2048" height="791" alt="image" src="https://github.com/user-attachments/assets/ee08f620-ee4d-4bb8-ab1e-96018346ba6c" />
+
+
 Classe choisie : ProcessUtils  
 Pourquoi : À plusieurs instructions et branches manquées par les tests et une bonne variété de fonctions plus pures et plus dépendantes d’objets externes.
 
@@ -12,7 +14,8 @@ Après 39 minutes d’exécution, 2 autres méthodes ont des nouveaux tests : es
 Les tests ne fonctionnent plus (couverture de 0%) et après un temps considérable à essayer de les faire fonctionner j’ai décidé de recommencer\! Quel plaisir.
 
 J’ai utilisé Pitest pour analyser la couverture du code cette fois ci. J’ai pris la même classe qu’à ma dernière tentative : ProcessUtils ainsi que la classe XMLReaderUtils qui a un fichier de tests dédiés.  
-![][image2]
+<img width="1574" height="754" alt="image" src="https://github.com/user-attachments/assets/506a8754-496a-4a3d-9e35-467c5260e4e4" />
+
 
 J’ai téléchargé un autre modèle ( Qwen2.5:7b ) pour avoir un modèle qui ne raisonne pas et qui a une plus grande quantité de mémoire pour son contexte étant donné que j’ai eu des mauvais résultats avec le modèle de 3b.
 
@@ -24,7 +27,9 @@ Le générateur a supposé qu’on pouvait remplacer les objets par des faux (mo
 
 Analyse qualitative des tests générés  
 Le générateur a deviné ce que le code retourne en le lisant, sans jamais l’exécuter, et il s’est souvent trompé. Plusieurs tests attendent aussi un comportement propre à Windows, ou une exception que le code n’envoie jamais (ex: attend une NullPointerException là où le code lève une IllegalArgumentException). Les noms des tests promettent des cas (timeout, sécurité) que leur contenu ne teste pas. Tout ça, à cause des oracles qui contredisent (ex: escapeCommandLine : on attend une quote ajoutée alors que la condition l’empêche) ou qui sont fragiles (ex: On attend une précision à la milliseconde sur sleep) et même trop faibles pour détecter une mutation (assertNotNull sur un builder sans vérifier sa configuration).  
-![][image3]  
+
+<img width="1560" height="754" alt="image" src="https://github.com/user-attachments/assets/704eb5ba-fa0e-4d5f-b14d-758314e450d5" />
+
 Les tests générés ne détectent clairement pas tous les mutants mais il y a une amélioration marquée pour les deux classes.
 
 Score de mutation avec les nouveaux tests
