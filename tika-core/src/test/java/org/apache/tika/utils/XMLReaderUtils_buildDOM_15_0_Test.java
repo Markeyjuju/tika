@@ -131,7 +131,7 @@ public class XMLReaderUtils_buildDOM_15_0_Test {
     public void testEntiteExterneNonResolue() throws Exception {
         File secret = File.createTempFile("secret", ".txt");
         secret.deleteOnExit();
-        try (FileWriter w = new FileWriter(secret)) {
+        try (FileWriter w = new FileWriter(secret, StandardCharsets.UTF_8)) {
             w.write("SECRET");
         }
         String xml = "<?xml version=\"1.0\"?><!DOCTYPE l [<!ENTITY x SYSTEM \"file://"
